@@ -1,0 +1,8 @@
+- hosts: all
+  remote_user: root
+
+  tasks:
+    - name: load nginx.tar
+      copy: src=/root/nginx.tar dest=/root
+    - name: load nginx image
+      shell: chdir=/root docker load < nginx.tar

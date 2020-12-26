@@ -1,0 +1,13 @@
+version: '3.6'
+services:
+
+  nginx:
+    image: nginx:li
+    volumes:
+      - /web:/usr/share/nginx/html
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+    ports:
+      - 80:80

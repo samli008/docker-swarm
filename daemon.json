@@ -1,0 +1,7 @@
+{
+  "insecure-registries": [
+    "harbor.liyang.com"
+  ]
+}
+
+
