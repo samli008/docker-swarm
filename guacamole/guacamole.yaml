@@ -1,4 +1,4 @@
-# docker-compose deploy guacamole 
+# docker swarm deploy guacamole 
 version: '3.6'
 services:
   guacd:
