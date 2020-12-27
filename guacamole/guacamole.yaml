@@ -1,0 +1,40 @@
+# docker-compose deploy guacamole 
+version: '3.6'
+services:
+  guacd:
+    image: guacamole/guacd:li
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  mysql:
+    image: mysql:li
+    volumes:
+      - /mysql:/var/lib/mysql
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=liyang
+      - MYSQL_DATABASE=guacamole_db
+      - MYSQL_USER=liyang
+      - MYSQL_PASSWORD=liyang
+  guacamole:
+    image: guacamole/guacamole:li
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "81:8080"
+    environment:  
+      - MYSQL_HOSTNAME=mole_mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=guacamole_db
+      - MYSQL_USER=liyang
+      - MYSQL_PASSWORD=liyang
+      - GUACD_HOSTNAME=mole_guacd
+      - GUACD_PORT=4822

@@ -1,0 +1,16 @@
+- hosts: all
+  remote_user: root
+
+  tasks:
+    - name: copy guacamole.tar
+      copy: src=/root/guacamole.tar dest=/root
+    - name: load guacamole
+      shell: chdir=/root docker load < guacamole.tar
+    - name: copy guacd.tar
+      copy: src=/root/guacd.tar dest=/root
+    - name: load guacd
+      shell: chdir=/root docker load < guacd.tar
+    - name: copy mysql.tar
+      copy: src=/root/mysql.tar dest=/root
+    - name: load mysql
+      shell: chdir=/root docker load < mysql.tar
