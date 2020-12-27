@@ -40,3 +40,4 @@ services:
     ports:
       - 80:80
 ```
+![swarm](./img/swarm.jpg)
