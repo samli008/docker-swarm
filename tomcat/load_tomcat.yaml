@@ -9,5 +9,5 @@
 
     - name: copy tomcat.tar
       copy: src=/root/tomcat.tar dest=/root
-    - name: load tomcat.tar
+    - name: load tomcat
       shell: chdir=/root docker load < tomcat.tar
